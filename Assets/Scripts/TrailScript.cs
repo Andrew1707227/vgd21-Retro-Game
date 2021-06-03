@@ -21,18 +21,25 @@ public class TrailScript : MonoBehaviour {
         }
         if (TryGetComponent(out PlayerMove playerMove)) {
             currTrail.transform.position = trailPos + (transform.position - trailPos) / 2;
-            currTrail.transform.localScale += Vector3.up * GetComponent<PlayerMove>().getSpeed();
-        } else {
-            //currTrail.transform.localScale += Vector3.up * GetComponent<EnemyMove>().getSpeed();
+            currTrail.transform.localScale += Vector3.up * playerMove.getSpeed();
+        } else if (TryGetComponent(out EnemyMove enemyMove)) {
+            currTrail.transform.position = trailPos + (transform.position - trailPos) / 2;
+            currTrail.transform.localScale += Vector3.up * enemyMove.speed;
         }
         currRot = transform.rotation.eulerAngles.z;
     }
 
     private void SpawnTrail() {
         if (currTrail) {
-            currTrail.transform.localScale -= Vector3.up * GetComponent<PlayerMove>().getSpeed();
+            if (TryGetComponent(out PlayerMove playerMove)) {
+                currTrail.transform.localScale -= Vector3.up * playerMove.getSpeed();
+            } else if (TryGetComponent(out EnemyMove enemyMove)) {
+                currTrail.transform.localScale -= Vector3.up * enemyMove.speed;
+            }
+            currTrail.layer = 0;
         }
         currTrail = Instantiate(trailPrefab, transform.position, transform.rotation);
+        currTrail.layer = 2;
         trailPos = transform.position;
         currTrail.GetComponent<SpriteRenderer>().color = trailColor;
     }
