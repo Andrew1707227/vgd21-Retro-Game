@@ -60,6 +60,7 @@ public class EnemyMove : MonoBehaviour {
 
     private IEnumerator killPlayer() {
         GetComponent<Animator>().enabled = true;
+        GetComponent<AudioSource>().Play();
         speed = 0;
         yield return new WaitForSeconds(.25f);
         GetComponent<SpriteRenderer>().enabled = false;

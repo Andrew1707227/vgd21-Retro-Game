@@ -12,9 +12,12 @@ public class PlayerMove : MonoBehaviour {
 
     private bool debounce;
 
+    public AudioSource Asource;
+
     void Start() {
         currSpeed = minSpeed;
         debounce = false;
+        Asource.Play();
     }
 
     void FixedUpdate() {
@@ -42,6 +45,9 @@ public class PlayerMove : MonoBehaviour {
         } else if (currSpeed > minSpeed) {
             currSpeed -= accler;
         }
+        if (rot != transform.rotation.eulerAngles.z) {
+            Asource.Play();
+        }
         rot = transform.rotation.eulerAngles.z;
         if (rot == 0) {
             transform.position += Vector3.up * currSpeed;
@@ -66,13 +72,13 @@ public class PlayerMove : MonoBehaviour {
 
     private IEnumerator killPlayer() {
         GetComponent<Animator>().enabled = true;
+        GetComponent<AudioSource>().Play();
         maxSpeed = 0;
         minSpeed = 0;
         currSpeed = 0;
         yield return new WaitForSeconds(.25f);
         GetComponent<SpriteRenderer>().enabled = false;
-        yield return new WaitForSeconds(.25f);
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        Asource.enabled = false;
     }
 
 }
