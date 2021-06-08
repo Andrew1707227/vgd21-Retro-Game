@@ -36,10 +36,8 @@ public class TrailScript : MonoBehaviour {
             } else if (TryGetComponent(out EnemyMove enemyMove)) {
                 currTrail.transform.localScale -= Vector3.up * enemyMove.speed;
             }
-            currTrail.layer = 0;
         }
         currTrail = Instantiate(trailPrefab, transform.position, transform.rotation);
-        currTrail.layer = 2;
         trailPos = transform.position;
         currTrail.GetComponent<SpriteRenderer>().color = trailColor;
     }

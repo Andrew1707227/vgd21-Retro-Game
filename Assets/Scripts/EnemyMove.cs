@@ -13,19 +13,14 @@ public class EnemyMove : MonoBehaviour {
 
     void FixedUpdate() {
         float rot = transform.rotation.eulerAngles.z;
-        RaycastHit2D[] rays = new RaycastHit2D[4];
-        rays[0] = Physics2D.Raycast(transform.position,Vector2.up);
-        rays[1] = Physics2D.Raycast(transform.position, Vector2.down);
-        rays[2] = Physics2D.Raycast(transform.position, Vector2.left);
-        rays[3] = Physics2D.Raycast(transform.position, Vector2.right);
-
-        RaycastHit2D bigboi = rays[0];
-        for (int i = 0; i < rays.Length; i++) {
-            if (rays[i].distance > bigboi.distance) {
-                bigboi = rays[i];
-            }
+        RaycastHit2D Yray = Physics2D.Raycast(transform.position,transform.up, 2);
+        RaycastHit2D Xray = Physics2D.Raycast(transform.position, transform.right, 2);
+        if (Yray.collider != null && Xray.collider == null) {
+            var rotation = transform.rotation;
+            rotation.eulerAngles += new Vector3(0, 0, 90);
+            transform.rotation = rotation;
         }
-        if (bigboi.collider.tag == "Wall") {
+        /*if (bigboi.collider.tag == "Wall") {
             if (bigboi == rays[3] && rot != 90) {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
 
@@ -38,7 +33,7 @@ public class EnemyMove : MonoBehaviour {
             } else if (bigboi == rays[1] && rot != 0) {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 180));
             }
-        }
+        }*/
         rot = transform.rotation.eulerAngles.z;
         if (rot == 0) {
             transform.position += Vector3.up * speed;

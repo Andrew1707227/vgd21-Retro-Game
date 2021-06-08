@@ -1245,7 +1245,7 @@ GameObject:
   - component: {fileID: 1158343747}
   - component: {fileID: 1158343746}
   - component: {fileID: 1158343753}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1686,7 +1686,7 @@ GameObject:
   - component: {fileID: 2015106601}
   - component: {fileID: 2015106600}
   - component: {fileID: 2015106607}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy (1)
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1963,7 +1963,7 @@ GameObject:
   - component: {fileID: 2116071819}
   - component: {fileID: 2116071818}
   - component: {fileID: 2116071825}
-  m_Layer: 0
+  m_Layer: 2
   m_Name: Enemy (2)
   m_TagString: Player
   m_Icon: {fileID: 0}
