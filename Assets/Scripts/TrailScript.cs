@@ -38,7 +38,13 @@ public class TrailScript : MonoBehaviour {
             }
         }
         currTrail = Instantiate(trailPrefab, transform.position, transform.rotation);
+        StartCoroutine(plzwork());
         trailPos = transform.position;
         currTrail.GetComponent<SpriteRenderer>().color = trailColor;
+    }
+    private IEnumerator plzwork() {
+        currTrail.layer = 2;
+        yield return new WaitForSeconds(.25f);
+        currTrail.layer = 0;
     }
 }

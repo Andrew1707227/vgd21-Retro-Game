@@ -13,13 +13,16 @@ public class EnemyMove : MonoBehaviour {
 
     void FixedUpdate() {
         float rot = transform.rotation.eulerAngles.z;
-        RaycastHit2D Yray = Physics2D.Raycast(transform.position,transform.up, 2);
-        RaycastHit2D Xray = Physics2D.Raycast(transform.position, transform.right, 2);
-        if (Yray.collider != null && Xray.collider == null) {
+        RaycastHit2D Yray = Physics2D.Raycast(transform.position,transform.up);
+        RaycastHit2D rightRay = Physics2D.Raycast(transform.position, transform.right);
+        RaycastHit2D leftRay = Physics2D.Raycast(transform.position, -transform.right);
+        Debug.Log(Yray.distance);
+       if (Yray.distance == Mathf.Clamp(Yray.distance,.01f,.75f)) {
             var rotation = transform.rotation;
             rotation.eulerAngles += new Vector3(0, 0, 90);
             transform.rotation = rotation;
         }
+
         /*if (bigboi.collider.tag == "Wall") {
             if (bigboi == rays[3] && rot != 90) {
                 transform.rotation = Quaternion.Euler(new Vector3(0, 0, 270));
