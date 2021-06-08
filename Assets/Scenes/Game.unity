@@ -1331,7 +1331,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1166667
-  deleteme: 1
 --- !u!114 &1158343750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1693,7 +1692,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2015106600
 Animator:
   serializedVersion: 3
@@ -1773,7 +1772,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1166667
-  deleteme: 0
 --- !u!114 &2015106604
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1971,7 +1969,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!95 &2116071818
 Animator:
   serializedVersion: 3
@@ -2051,7 +2049,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 0.1166667
-  deleteme: 0
 --- !u!114 &2116071822
 MonoBehaviour:
   m_ObjectHideFlags: 0
